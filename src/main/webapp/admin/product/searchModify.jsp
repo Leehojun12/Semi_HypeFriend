@@ -144,7 +144,7 @@ ul {
 }
 
 .sub-menu {
-	margin-left: 36px;
+	margin-left: 16%;
 	list-style: none;
 	display: none;
 }
@@ -156,6 +156,7 @@ ul {
 .sub-menu li a {
 	font-size: 14px;
 	color: #fff;
+	text-decoration-line: none;
 }
 
 .sub-menu li:hover {

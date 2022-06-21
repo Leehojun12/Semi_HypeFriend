@@ -306,7 +306,7 @@
                       <input type="text" id="emailAdress" value="${email1}" style="width: 150px; font-size: 0.8rem;"> @
                       <input type="text" id="emailAdress2" value="${email2}" style="width: 100px; font-size: 0.8rem;">
                       <button type="button" class="btn btn-dark" id="checkEmail" style="height: 30px; font-size: 13px;"
-                        disabled>중복확인</button>
+                        >중복확인</button>
 
                 </td>
               </tr>
@@ -368,40 +368,40 @@
       </form>
 
       <!-- Footer-->
-      <footer class="footer bg-light">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-6 h-100 text-center text-lg-start my-auto">
-              <ul class="list-inline mb-2">
-                <li class="list-inline-item"><a href="#!">COMPANY</a></li>
-                <li class="list-inline-item">⋅</li>
-                <li class="list-inline-item"><a href="#!">매장찾기</a></li>
-                <li class="list-inline-item">⋅</li>
-                <li class="list-inline-item"><a href="#!">고객센터</a></li>
-                <li class="list-inline-item">⋅</li>
-                <li class="list-inline-item"><a href="#!" style="color: red; font-weight: bold;">개인정보처리방침</a></li>
+  <footer class="footer bg-light mt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 h-100 text-center text-lg-start my-auto">
+          <ul class="list-inline mb-2">
+            <li class="list-inline-item"><a href="/ToCompany.page">COMPANY</a></li>
+            <li class="list-inline-item">⋅</li>
+            <li class="list-inline-item"><a href="/TosearchMap.page">매장찾기</a></li>
+            <li class="list-inline-item">⋅</li>
+            <li class="list-inline-item"><a href="/toCs.mem">고객센터</a></li>
+            <li class="list-inline-item">⋅</li>
+            <li class="list-inline-item"><p  style="color: red; font-weight: bold;">개인정보처리방침</p></li>
 
-              </ul>
-              <p class="text-muted small mb-4 mb-lg-0">하잇프랜드(주) 대표 : 이호준 | 개인정보관리책임자 : 김영완 | 사업자등록번호 : 22-02-22</p>
-              <p class="text-muted small mb-4 mb-lg-0">주소 : 서울특별시 영등포구 선유동2로 57 이레빌딩</p>
-              <p class="text-muted small mb-4 mb-lg-0">&copy; Your Website 2022. All Rights Reserved.</p>
-            </div>
-            <div class="col-lg-6 h-100 text-center text-lg-end my-auto">
-              <ul class="list-inline mb-0">
-                <li class="list-inline-item me-4">
-                  <a href="#!"><i class="bi-facebook fs-3"></i></a>
-                </li>
-                <li class="list-inline-item me-4">
-                  <a href="#!"><i class="bi-twitter fs-3"></i></a>
-                </li>
-                <li class="list-inline-item">
-                  <a href="#!"><i class="bi-instagram fs-3"></i></a>
-                </li>
-              </ul>
-            </div>
-          </div>
+          </ul>
+          <p class="text-muted small mb-4 mb-lg-0">하잇프랜드(주) 대표 : 이호준 | 개인정보관리책임자 : 김영완 | 사업자등록번호 : 22-02-22</p>
+          <p class="text-muted small mb-4 mb-lg-0">주소 : 서울특별시 영등포구 선유동2로 57 이레빌딩</p>
+          <p class="text-muted small mb-4 mb-lg-0">&copy; Your Website 2022. All Rights Reserved.</p>
         </div>
-      </footer>
+        <div class="col-lg-6 h-100 text-center text-lg-end my-auto">
+          <ul class="list-inline mb-0">
+            <li class="list-inline-item me-4">
+              <a href="https://ko-kr.facebook.com/" target="_blank"><i class="bi-facebook fs-3"></i></a>
+            </li>
+            <li class="list-inline-item me-4">
+              <a href="https://twitter.com/?lang=ko" target="_blank"><i class="bi-twitter fs-3"></i></a>
+            </li>
+            <li class="list-inline-item">
+              <a href="https://www.instagram.com/" target="_blank"><i class="bi-instagram fs-3"></i></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
 
     </body>
 
@@ -442,24 +442,6 @@
 
       const total2 = document.getElementById('total2');
 
-      $('#emailAdress2').focusout(function () {
-        let email = '';
-        if ($('#emailAdress').val() !== '') {
-          email = $('#emailAdress').val() + '@' + $('#emailAdress2').val();
-          $('#user_email').val(email);
-        }
-        $('#checkEmail').attr('disabled', false);
-      });
-
-      $('#emailAdress').focusout(function () {
-        let email = '';
-        if ($('#emailAdress').val() !== '') {
-          email = $('#emailAdress').val() + '@' + $('#emailAdress2').val();
-          $('#user_email').val(email);
-        }
-        $('#checkEmail').attr('disabled', false);
-      });
-
       $('#checkEmail').on('click', function () {
         if ($('#emailAdress').val() === '') {
           alert('이메일을 입력해주세요.');
@@ -469,8 +451,11 @@
           return;
         }
 
+        let email = $('#emailAdress').val() + '@' + $('#emailAdress2').val();
+        $('#user_email').val(email);
+
         $.ajax({
-          url: '/checkEmail.mem',
+          url: '/checkEmail2.mem',
           type: 'post',
           data: { user_email: $('#user_email').val() },
           dataType: 'text',
@@ -491,7 +476,7 @@
         });
       });
 
-      $('#emailAdress').change(function () {
+      $('#emailAdress').on("propertychange change keyup paste input", function() {
         if (document.getElementById('emailAdress').value !== '') {
           if (total2.value == '1') {
             $('#submitBtn').attr('disabled', true);
@@ -501,7 +486,7 @@
         }
       });
 
-      $('#emailAdress2').change(function () {
+      $('#emailAdress2').on("propertychange change keyup paste input", function() {
         if (document.getElementById('emailAdress2').value !== '') {
           if (total2.value == '1') {
             $('#submitBtn').attr('disabled', true);
@@ -538,12 +523,11 @@
           alert('주소를 입력해 주세요.');
           return;
         } else if (total2.value !== '1') {
-          alert('이메일을 필수로 수정하지 않으면 수정이 불가능합니다.');
           alert('이메일 중복체크를 진행해주세요.');
           return;
         }
 
-        let email = $('#emailAdress').val() + '@' + $('#emailAdress2').val();;
+        let email = $('#emailAdress').val() + '@' + $('#emailAdress2').val();
         $('#user_email').val(email);
 
         $.ajax({

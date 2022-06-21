@@ -101,7 +101,12 @@ public class AdminMemberController extends HttpServlet {
 		}else if(uri.equals("/memberBlacklist.amem")) {
 	         String user_id = request.getParameter("user_id");
 	         System.out.println("블랙리스트 아이디 : " + user_id);
-	         
+	         String black_reason;
+	         if(request.getParameter("black_reason") == "" ) {
+	            black_reason = "블랙리스트에서 해방";
+	         }else {
+	            black_reason = request.getParameter("black_reason");
+	         }
 	         AdminMemberDAO dao = new AdminMemberDAO();
 	         try {
 	            ArrayList<BlackListDTO> blackList = dao.selectBlackReason(user_id);

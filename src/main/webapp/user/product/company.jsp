@@ -105,12 +105,6 @@ font-weight: bold;
 	border-color: aliceblue;
 }
 
-.dropdown:hover .dropdown-menu {
-	display: block;
-	margin-top: 0;
-	font-weight: bold;
-}
-
 /*풋터 영역*/
 .footerBox {
 	height: 200px;
@@ -205,13 +199,13 @@ footer.footer {
 		<div class="container-content">
 			<div class="row">
 				<div class="col menubar d-flex justify-content-center">ABOUT
-					HYPELAND</div>
+					HYPEFRIEND</div>
 			</div>
 			<div class="row">
 				<div class="col d-flex justify-content-center m-4 detail">
 					Youth Culture 대표 아이콘<br> 전통적으로 견고함과 실용성을 강조했던 워크웨어와 데님으로부터 얻은<br>
 					모티브를 바탕으로 트랜디한 스타일을 전개하는 라이프 스타일 캐주얼 브랜드입니다.<br> 다양한 시대의
-					유스컬처(Youth Culture)를 대표하는 아이콘으로 사랑받았던<br> ‘HYPELAND’는 끊임없이
+					유스컬처(Youth Culture)를 대표하는 아이콘으로 사랑받았던<br> ‘HYPEFRIEND’는 끊임없이
 					혁신하는 브랜드로 기억되고자 합니다.
 				</div>
 			</div>
@@ -227,40 +221,40 @@ footer.footer {
 		</div>
 	</div>
 
-	<footer class="footer bg-light">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-6 h-100 text-center text-lg-start my-auto">
-					<ul class="list-inline mb-2">
-						<li class="list-inline-item"><a href="#!">COMPANY</a></li>
-						<li class="list-inline-item">⋅</li>
-						<li class="list-inline-item"><a href="#!">매장찾기</a></li>
-						<li class="list-inline-item">⋅</li>
-						<li class="list-inline-item"><a href="#!">고객센터</a></li>
-						<li class="list-inline-item">⋅</li>
-						<li class="list-inline-item"><a href="#!"
-							style="color: red; font-weight: bold;">개인정보처리방침</a></li>
+	<!-- Footer-->
+  <footer class="footer bg-light mt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 h-100 text-center text-lg-start my-auto">
+          <ul class="list-inline mb-2">
+            <li class="list-inline-item"><a href="/ToCompany.page">COMPANY</a></li>
+            <li class="list-inline-item">⋅</li>
+            <li class="list-inline-item"><a href="/TosearchMap.page">매장찾기</a></li>
+            <li class="list-inline-item">⋅</li>
+            <li class="list-inline-item"><a href="/toCs.mem">고객센터</a></li>
+            <li class="list-inline-item">⋅</li>
+            <li class="list-inline-item"><p  style="color: red; font-weight: bold;">개인정보처리방침</p></li>
 
-					</ul>
-					<p class="text-muted small mb-4 mb-lg-0">하잇프랜드(주) 대표 : 이호준 |
-						개인정보관리책임자 : 김영완 | 사업자등록번호 : 22-02-22</p>
-					<p class="text-muted small mb-4 mb-lg-0">주소 : 서울특별시 영등포구 선유동2로
-						57 이레빌딩</p>
-					<p class="text-muted small mb-4 mb-lg-0">&copy; Your Website
-						2022. All Rights Reserved.</p>
-				</div>
-				<div class="col-lg-6 h-100 text-center text-lg-end my-auto">
-					<ul class="list-inline mb-0">
-						<li class="list-inline-item me-4"><a href="#!"><i
-								class="bi-facebook fs-3"></i></a></li>
-						<li class="list-inline-item me-4"><a href="#!"><i
-								class="bi-twitter fs-3"></i></a></li>
-						<li class="list-inline-item"><a href="#!"><i
-								class="bi-instagram fs-3"></i></a></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</footer>
+          </ul>
+          <p class="text-muted small mb-4 mb-lg-0">하잇프랜드(주) 대표 : 이호준 | 개인정보관리책임자 : 김영완 | 사업자등록번호 : 22-02-22</p>
+          <p class="text-muted small mb-4 mb-lg-0">주소 : 서울특별시 영등포구 선유동2로 57 이레빌딩</p>
+          <p class="text-muted small mb-4 mb-lg-0">&copy; Your Website 2022. All Rights Reserved.</p>
+        </div>
+        <div class="col-lg-6 h-100 text-center text-lg-end my-auto">
+          <ul class="list-inline mb-0">
+            <li class="list-inline-item me-4">
+              <a href="https://ko-kr.facebook.com/" target="_blank"><i class="bi-facebook fs-3"></i></a>
+            </li>
+            <li class="list-inline-item me-4">
+              <a href="https://twitter.com/?lang=ko" target="_blank"><i class="bi-twitter fs-3"></i></a>
+            </li>
+            <li class="list-inline-item">
+              <a href="https://www.instagram.com/" target="_blank"><i class="bi-instagram fs-3"></i></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>

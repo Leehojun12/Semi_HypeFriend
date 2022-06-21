@@ -141,7 +141,7 @@ ul {
 }
 
 .sub-menu {
-	margin-left: 32px;
+	margin-left: 16%;
 	list-style: none;
 	display: none;
 	text-decoration-line: none;

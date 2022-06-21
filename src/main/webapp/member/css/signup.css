@@ -26,6 +26,9 @@ i{	cursor: pointer;
 }
 /* 네비바 드롭다운 */
 .dropdown-toggle:hover{color: #83bf7b; border-color: aliceblue;}
+.btn{
+  border-style: none;
+}
 .dropdown:hover .nav-category {
 display: block;
 margin-top: 0;

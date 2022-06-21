@@ -163,6 +163,7 @@ prefix="c"%>
       .sub-menu li a {
         font-size: 14px;
         color: #fff;
+        text-decoration-line: none;
       }
 
       .sub-menu li:hover {

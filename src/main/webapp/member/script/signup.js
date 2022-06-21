@@ -156,6 +156,27 @@ function emailOptionBox(e) {
   });
 }
 
+function emailInputBox(e) {
+  const value = e.value;
+  let email = '';
+
+  console.log(value);
+
+  email =
+    $('#emailAdress').val() + '@' + $('#selectEmail option:selected').text();
+  $('#user_email').val(email);
+
+  e.addEventListener('change', function () {
+    if (document.getElementById('emailAdress').value !== '') {
+      if (total2.value == '1') {
+        $('#submitBtn').attr('disabled', true);
+        total2.value = '';
+        return;
+      }
+    }
+  });
+}
+
 $('#emailAdress2').focusout(function () {
   let email = '';
   if ($('#emailAdress').val() !== '') {

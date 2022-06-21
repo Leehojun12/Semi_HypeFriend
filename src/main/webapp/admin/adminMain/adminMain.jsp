@@ -318,6 +318,10 @@ prefix="c"%>
       .dataBox-Text-Count {
         font-size: 20px;
       }
+      .highcharts-text-outline{
+        fill: none;
+      stroke: none;
+      }
     </style>
   </head>
   <body>
@@ -390,7 +394,7 @@ prefix="c"%>
           <div class="nav-linksContainer nav-linksContainer4">
             <div class="icon-link row d-flex align-items-center">
               <div class="icon-link-left col-md-3 d-flex justify-content-end">
-                <i class="fa-solid fa-cart-shopping cart"></i>
+                <i class="fa-solid fa-clipboard-list"></i>
               </div>
               <div class="icon-link-center col-md-6">
                 <span class="link_name cartManagement">게시판 관리</span>
@@ -517,9 +521,8 @@ prefix="c"%>
 
     <script>
       document.getElementById('adminIconLogout').addEventListener('click', function() {
-
-                location.href = "/logoutProc.mem";
-              })
+        location.href = "/logoutProc.mem";
+      })
 
 
       $(".arrow1").on("click", function() {
@@ -541,7 +544,7 @@ prefix="c"%>
       $(".memberDelete").on("click", function(e) {
       	alert("member");
       });
-      
+
       $(".logoImg").on("click",function(){
           location.href = "/admin.ad"
        })
@@ -590,17 +593,15 @@ prefix="c"%>
       // String을 int로
       let cntCategoryTop = parseInt("${cntCategoryTop}");
       let cntCategoryBottom = parseInt("${cntCategoryBottom}");
-      let cntCategorySocks = parseInt("${cntCategorySocks}");
       let cntCategoryBag = parseInt("${cntCategoryBag}");
-      let cntCategoryCap = parseInt("${cntCategoryCap}");
+      let cntCategoryAcc = parseInt("${cntCategoryAcc}");
       let allBuyQty = parseInt("${allBuyQty}");
 
       // 퍼센트로 변경
       let perCntCategoryTop = (cntCategoryTop / allBuyQty) * 100;
       let perCntCategoryBottom = (cntCategoryBottom / allBuyQty) * 100;
-      let perCntCategorySocks = (cntCategorySocks / allBuyQty) * 100;
+      let perCntCategoryAcc = (cntCategoryAcc / allBuyQty) * 100;
       let perCntCategoryBag = (cntCategoryBag / allBuyQty) * 100;
-      let perCntCategoryCap = (cntCategoryCap / allBuyQty) * 100;
 
       // highCharts circleCharts
       // circleCharts
@@ -650,7 +651,7 @@ prefix="c"%>
 
       		}, {
       			name : "악세서리",
-      			y : perCntCategorySocks,
+      			y : perCntCategoryAcc,
 
       		}, {
       			name : "가방",
@@ -692,24 +693,24 @@ prefix="c"%>
       						enabled : false
       					},
       					tooltip : {
-      						pointFormat : 'Population in 2017: <b>{point.y:.1f} millions</b>'
+      						pointFormat : '일 매출 : <b>{point.y:.1f} 원</b>'
       					},
       					credits: {
       					      enabled: false,
       					    },
       					series : [ {
       						name : 'Population',
-      						data : [['06월 04일', ${list[0].getPay_price()}],
-      						      ['06월 05일', ${list[1].getPay_price()}],
-      						      ['06월 06일', ${list[2].getPay_price()}],
-      						      ['06월 07일', ${list[3].getPay_price()}],
-      						      ['06월 08일', ${list[4].getPay_price()}],
-      						      ['06월 09일', ${list[5].getPay_price()}],
-      						      ['06월 10일', ${list[6].getPay_price()}],
-      						      ['06월 11일', ${list[7].getPay_price()}],
-      						      ['06월 12일', ${list[8].getPay_price()}],
-      						      ['06월 13일', ${list[9].getPay_price()}],
-      						      ['06월 14일', ${list[10].getPay_price()}]],
+      						data : [['06월 12일', ${list[0].getPay_price()}],
+      						      ['06월 13일', ${list[1].getPay_price()}],
+      						      ['06월 14일', ${list[2].getPay_price()}],
+      						      ['06월 15일', ${list[3].getPay_price()}],
+      						      ['06월 16일', ${list[4].getPay_price()}],
+      						      ['06월 17일', ${list[5].getPay_price()}],
+      						      ['06월 18일', ${list[6].getPay_price()}],
+      						      ['06월 19일', ${list[7].getPay_price()}],
+      						      ['06월 20일', ${list[8].getPay_price()}],
+      						      ['06월 21일', ${list[9].getPay_price()}],
+      						      ['06월 22일', ${list[10].getPay_price()}]],
       						dataLabels : {
       							enabled : true,
       							rotation : -90,
@@ -725,7 +726,7 @@ prefix="c"%>
       					} ]
       				});
 
-              
+
     </script>
   </body>
 </html>

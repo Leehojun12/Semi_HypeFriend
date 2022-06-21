@@ -81,7 +81,6 @@ public class AdminMainController extends HttpServlet {
 				
 				ArrayList list = dao.dailyTotalProfit();
 	            request.setAttribute("list", list);
-	            System.out.println(list);
 	            
 	            request.getRequestDispatcher("/admin/adminMain/adminMain.jsp").forward(request, response);
 			} catch (Exception e) {

@@ -243,41 +243,50 @@ a:hover {
 
 /* 상세 내용 모달*/
 .reviewDetailModal {
-	width: 360px;
-	height: 400px;
-	background-color: gray;
-	position: fixed;
-	top: 50%;
-	left: 60%;
-	transform: translate(-50%, -50%);
-	border-radius: 5px;
-	color: #e8ecef;
-	display: none;
+   width: 400px;
+   height: 500px;
+   background-color: gray;
+   position: fixed;
+   top: 50%;
+   left: 60%;
+   transform: translate(-50%, -50%);
+   border-radius: 5px;
+   color: #e8ecef;
+   display: none;
 }
 
 .reviewModalBox {
-	padding: 20px;
-	height: 100%;
+   padding: 10px;
+   height: 100%;
 }
 
 .reviewDetailModalTitle {
-	height: 20%;
+   height: 10%;
 }
 
-.reviewDetailModalTitle p {
-	font-size: 18px;
-}
-
-.reviewDetailModalContent {
-	height: 70%;
+.reviewDetailImg {
+   text-align: center;
 }
 
 .reviewDetailText {
-	word-break: break-all;
+   margin-left: 13px;
+   word-break: break-all;
+}
+
+.reviewDetailModalTitle p {
+   font-size: 18px;
+}
+
+.reviewDetailModalImg {
+   height: 47%;
+}
+
+.reviewDetailModalText {
+   height: 38%
 }
 
 .reviewDetailModalFooter {
-	height: 10%;
+   height: 10%;
 }
 
 /* 리뷰 딜리트 모달 */
@@ -479,25 +488,31 @@ a:hover {
 
 					<!-- 리뷰 내용 상세보기 -->
 					<div class="reviewDetailModal">
-						<div class="reviewModalBox">
-							<div class="row reviewDetailModalTitle d-flex">
-								<div class="col">
-									<h4>내용</h4>
-								</div>
-								<div class="col d-flex justify-content-end">
-									<i class="fa-solid fa-xmark closeBtn"></i>
-								</div>
-							</div>
-							<div class="row reviewDetailModalContent d-flex flex-column ">
-								<div class="col reviewDetailText w-100"></div>
-								<div class="col reviewDetailImg bg-primary w-100"></div>
-							</div>
-							<div class="row reviewDetailModalFooter ">
-								<div class="col d-flex justify-content-center reviewDetailDate">
-									2022,07월 08일</div>
-							</div>
-						</div>
-					</div>
+                        <div class="reviewModalBox">
+                            <div class="row reviewDetailModalTitle d-flex">
+                                <div class="col-10">
+                                    <h4>내용</h4>
+                                </div>
+                                <div class="col-2 d-flex justify-content-end">
+                                    <i class="fa-solid fa-xmark closeBtn"></i>
+                                </div>
+                            </div>
+                            <div
+                                class="row reviewDetailModalImg d-flex justify-content-center ">
+                                <div class="col reviewDetailImg "></div>
+                            </div>
+                            <div
+                                class="row reviewDetailModalText d-flex justify-content-center ">
+                                <div class="col reviewDetailText w-100"></div>
+                            </div>
+
+                            <div class="row reviewDetailModalFooter ">
+                                <div class="col d-flex justify-content-center reviewDetailDate">
+                                    2022,07월 08일</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
 					<!-- 리뷰 삭제하기 -->
 					<div class="reviewDeleteModal">
@@ -549,34 +564,47 @@ a:hover {
       })
 
      // 상세 내용보기 아이콘 버튼 클릭시 
-     $(".reviewDetailIcon").on("click",function(){
-    	 let thisRow = $(this).closest('tr'); 
-    	 let seq_review = thisRow.find('td:eq(8)').find('input').val();
-    	 
-    	$.ajax({
-    		url:"/checkReviewDetail.rv?seq_review="+seq_review,
-			type: "get",
-    		dataType: "json",
-    		success: function(data) {
-    			
-    			console.log(data);
-    			// 데이터 값 받아오기 
-    			let review_content = data[0].review_content;
-    			let review_date = data[0].review_date;
-    			$(".reviewDetailText").html(review_content);
-    			$(".reviewDetailDate").html(review_date);
-    			
-    			// 모달 창 띄우기 
-    			$(".reviewDetailModal").fadeIn();
+     $(".reviewDetailIcon").off().on("click",function(){
+         let thisRow = $(this).closest('tr'); 
+         let seq_review = thisRow.find('td:eq(8)').find('input').val();
+         let seq_product = thisRow.find('td:eq(1)').text();
 
-    	  		$(".closeBtn").off().on("click",function() {
-    	    		$(".reviewDetailModal").fadeOut();
-    	  		})
-    		},
-    		error : function(e) {
-    			console.log(e);
-    		}
-    	})
+        $.ajax({
+            url:"/checkReviewDetail.rv?&seq_review="+seq_review+"&seq_product="+seq_product,
+            type: "get",
+            dataType: "json",
+            success: function(data) {
+                $(".reviewDetailImg").empty("");
+                console.log(data[1].image_path);
+                console.log(data[1].image_name);
+                // 저장된 경로 값 가져오기
+
+                const img = document.createElement('img');
+                img.src = "./resource/imagesClothes/" + data[1].image_name;
+                img.setAttribute("width","350");
+                img.setAttribute("height","200");
+                console.log(img.src); 
+                $(".reviewDetailImg").append(img);
+
+                // 데이터 값 받아오기 
+                let review_content = data[0].review_content;
+                let review_date = data[0].review_date;
+                let image_name = data[1].image_name;
+                let image_path = data[1].image_path;
+                $(".reviewDetailText").html(review_content);
+                $(".reviewDetailDate").html(review_date);
+
+                // 모달 창 띄우기
+                $(".reviewDetailModal").fadeIn();
+
+                  $(".closeBtn").off().on("click",function() {
+                    $(".reviewDetailModal").fadeOut();
+                  })
+            },
+            error : function(e) {
+                console.log(e);
+            }
+        })
       })
       
       
